@@ -53,5 +53,4 @@ module BCD_cnt_bank(
         .Cout(Cout[15:12])
     );
 
-
 endmodule
