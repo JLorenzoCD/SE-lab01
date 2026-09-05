@@ -2,12 +2,15 @@
 
 module Frequency_meter(
         input clk,
-        input freq_in,
+        input servo0,
         input [15:0] sw,
 
         output [7:0] D0_SEG,
         output [3:0] D0_AN
     );
+
+    wire freq_in;
+    assign freq_in = servo0;
 
     wire rst;
     assign rst = sw[0];
