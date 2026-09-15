@@ -1,6 +1,8 @@
 # clk input is from the 100 MHz oscillator on Boolean board
 #create_clock -period 10.000 -name gclk [get_ports clk_100MHz]
+create_clock -period 10.000 -name gclk [get_ports {clk}]
 set_property -dict {PACKAGE_PIN F14 IOSTANDARD LVCMOS33} [get_ports {clk}]
+
 
 # Set Bank 0 voltage
 set_property CFGBVS VCCO [current_design]
@@ -115,3 +117,5 @@ set_property -dict {PACKAGE_PIN M14 IOSTANDARD LVCMOS33} [get_ports {servo0}]
 set_property -dict {PACKAGE_PIN M16 IOSTANDARD LVCMOS33} [get_ports {servo1}]
 set_property -dict {PACKAGE_PIN L15 IOSTANDARD LVCMOS33} [get_ports {servo2}]
 set_property -dict {PACKAGE_PIN L16 IOSTANDARD LVCMOS33} [get_ports {servo3}]
+
+# set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets servo0_IBUF]
