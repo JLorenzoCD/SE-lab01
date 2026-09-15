@@ -9,6 +9,21 @@ module BCD_cnt_bank(
     output [15:0] Cout
     );
 
+    // Señales para el detector de flanco de subida
+    logic freq_in_d;
+    logic freq_posedge;
+
+    always_ff @(posedge clk) begin
+        if (R) begin
+            freq_in_d <= 1'b0;
+        end else begin
+            freq_in_d <= freq_in;
+        end
+    end
+    // Evita contar multiples veces una misma onda larga
+    assign freq_posedge = freq_in && !freq_in_d;
+
+    // Contadores
     logic carry_cnt_U;
     logic carry_cnt_D;
     logic carry_cnt_C;
@@ -17,7 +32,7 @@ module BCD_cnt_bank(
         .clk(clk),
         .R(R),
         .en(en_cnt),
-        .Cin(freq_in),
+        .Cin(freq_posedge),
 
         .carry(carry_cnt_U),
         .Cout(Cout[3:0])

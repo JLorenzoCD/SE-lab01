@@ -10,26 +10,18 @@ module BCD_cnt(
     output logic [3:0] Cout
     );
 
-    logic Cin_prev;
-    logic Cin_rise;
-
     always_ff @(posedge clk) begin
         if (R) begin
-            Cin_prev <= 1'b0;
-            Cout     <= 4'd0;
-        end else begin
-            Cin_prev <= Cin;
-
-            if (en && Cin && !Cin_prev) begin
-                if (Cout == 4'd9)
-                    Cout <= 4'd0;
-                else
-                    Cout <= Cout + 1'b1;
+            Cout <= 4'd0;
+        end else if (en && Cin) begin
+            if (Cout == 4'd9) begin
+                Cout <= 4'd0;
+            end else begin
+                Cout <= Cout + 1'b1;
             end
         end
     end
 
-    assign Cin_rise = Cin && !Cin_prev;
-    assign carry = (Cout == 4'd9) && en && Cin_rise;
+    assign carry = (Cout == 4'd9) && en && Cin;
 
 endmodule
