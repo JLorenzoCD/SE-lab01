@@ -57,7 +57,7 @@ module Frequency_meter(
     logic [13:0] cnt_display;
     disp7seg_controller dispA(
         .clk(cnt_display[13]),
-        .bcd_dig({ CountReg[15:12], CountReg[11:8], CountReg[7:4], CountReg[3:0]}),
+        .bcd_dig({ CountReg[3:0], CountReg[7:4], CountReg[11:8], CountReg[15:12] }),
         .blank_dig(4'b0000),
         .seg(D0_SEG),
         .dig_en(D0_AN)
