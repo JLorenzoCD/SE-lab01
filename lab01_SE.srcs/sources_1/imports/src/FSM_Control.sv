@@ -10,10 +10,9 @@ module FSM_Control(
     output logic latch_en
     );
 
+    enum {S_MEDICION, S_CAPTURA, S_REINICIO} state, next_state;
 
-enum {S_MEDICION, S_CAPTURA, S_REINICIO} state, next_state;
-
-// Contador de milisegundos para medir la ventana de 1 segundo (0 a 999)
+    // Contador de milisegundos para medir la ventana de 1 segundo (0 a 999)
     // log2(1000) = 9.96 -> Necesitamos 10 bits.
     logic [9:0] ms_count;
     logic reset_ms; // Señal de control interna
