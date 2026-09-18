@@ -1,4 +1,10 @@
 # Laboratorio 1: Frecuencimentro sobre FPGA
+
+- Materia: Sistemas de instrumentalización - Famaf
+- Alumno: José Lorenzo Canovas
+- Año: 2026
+
+---
 ## Introducción:
 El sistema implementado es un frecuencímetro digital mediante el método de medición directa, donde para facilitar la implementación, se utiliza una ventana de tiempo de 1 segundo. Por lo cual, el conteo de los flancos ascendentes de una frecuencia equivale directamente a la frecuencia de la señal en Hertz (Hz).
 La implementación fue realizada mediante el software Vivado, con el lenguaje de descripción de hardware SystemVerilog, sobre una FPGA *AMD Boolean - XC7S50CSG324A Spartan 7* prestada por la cátedra.
@@ -39,9 +45,10 @@ Decisiones de diseño:
 3. A ultimo momento decidí modificar el diseño del BCD_cnt_bank para evitar contar multiple veces una frecuencia que sea de onda larga. Esto se realizo guardando un estado previo de la frecuencia de entrada.
 
 ## Resultados y Síntesis
-<!--
-Evidencia breve de que funcionó en la placa (por ejemplo, qué frecuencias de prueba inyectaron y qué observaron en los displays)
--->
+No pude probar el funcionamiento del frecuencimetro que implemente en la FPGA. Pero como he asistido a todas las clases, dare algunos resultados interesantes del funcionamiento del fecuencimetro de mis compañeros, los cuales, asumo que se comportarían de forma similar al que implemente.
+- Resultado 1: Si se pone la frecuencia a 1.234 Hz, entonces en los display se muestra 1234.
+- Resultado 2: Si se pone una frecuencia mayor a 9.999 Hz, ocurre overflow, por lo que con la frecuencia de prueba de 10.000Hz, entonces el display muestra 0000.
+- Resultado 3: Si se pone una frecuencia con decimal, como p.e.j. 1,5 Hz, entonces el numero en el display varia entre 1 y 2.
 
 Como se puede observar en la siguiente imagen, el frecuencimero implementado en la FPGA apenas ocupa recursos de la misma. Por lo que, podemos intuir que como el frecuencimetro implementado consumaría poco hardware, entonces debería de costar poco en producirlo (hablando de producir grandes cantidades de hardware).
 
